@@ -3,18 +3,21 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
-driver.get("https://leagueoflegends.fandom.com/wiki/List_of_champions")
+driver.get("https://www.leagueoflegends.com/en-us/champions/")
 
+driver.implicitly_wait(2)
 
-time.sleep(2)
-html=driver.find_element(By.XPATH, '//*[@id="mw-content-text"]/div[1]/table/tbody/tr[1]/td[1]/span/span/a/text()[0]')
+# htmls=driver.find_elements(By.CSS_SELECTOR,".style__Text-sc-n3ovyt-3 .")
+chms=driver.find_elements(By.CSS_SELECTOR,".style__Text-sc-n3ovyt-3.kThhiV")
 
+champions=[]
 
+for chm in chms:
+    champions.append(chm.text)
 
-print(html)
+print(champions)
 
 
 
