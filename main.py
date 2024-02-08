@@ -16,14 +16,13 @@ champions=[]
 for chm in chms:
     champions.append(chm.text)
 
-
-print("[List of champion]")
+print("[List of champions]")
 num=1
 for chm in champions:
     print(f"{num} - {chm}")
     num+=1
 
-choose=int(input("Choose a champion: "))
+choose=int(input("Choose a champion number : "))
 print(f"You have chosen {champions[choose-1]}")
 
 # 데이터 가공
@@ -34,11 +33,30 @@ for idx in range(len(champions)):
         champions[idx]=chm[:chm.find("&")]
 
 
-driver.get(f"https://leagueoflegends.fandom.com/wiki/{champions[choose-1]}/LoL")
 
+#데이터 검색
+driver.get(f"https://leagueoflegends.fandom.com/wiki/{champions[choose-1]}/LoL")
 driver.implicitly_wait(2)
-q=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[1]
+
+#Q
+q=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[0]
+print("[Skill Q cool down]")
 print(q.text)
+
+#W
+w=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[1]
+print("[Skill W cool down]")
+print(w.text)
+
+#E
+e=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[2]
+print("[Skill E cool down]")
+print(e.text)
+
+#R
+r=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[3]
+print("[Skill R cool down]")
+print(r.text)
 
 
 
