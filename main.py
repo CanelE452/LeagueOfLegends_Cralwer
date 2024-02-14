@@ -39,28 +39,33 @@ driver.get(f"https://leagueoflegends.fandom.com/wiki/{champions[choose-1]}/LoL")
 driver.implicitly_wait(2)
 
 #Q
-q=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[0]
 print("[Skill Q cool down]")
-print(q.text)
+try:
+    q=driver.find_element(By.CSS_SELECTOR,'.skill.skill_q div[data-source="cooldown"] .pi-data-value.pi-font')
+    print(q.text)
+except:
+    print("Dont have cool down")
 
 #W
-w=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[1]
 print("[Skill W cool down]")
-print(w.text)
+try:
+    w=driver.find_element(By.CSS_SELECTOR,'.skill.skill_w div[data-source="cooldown"] .pi-data-value.pi-font')
+    print(w.text)
+except:
+    print("Dont have cool down")
 
 #E
-e=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[2]
 print("[Skill E cool down]")
-print(e.text)
+try:
+    e=driver.find_element(By.CSS_SELECTOR,'.skill.skill_e div[data-source="cooldown"] .pi-data-value.pi-font')
+    print(e.text)
+except:
+    print("Dont have cool down")
 
 #R
-r=driver.find_elements(By.CSS_SELECTOR,'div[data-source="cooldown"] .pi-data-value.pi-font')[3]
 print("[Skill R cool down]")
-print(r.text)
-
-
-
-
-
-
-
+try:
+    r=driver.find_element(By.CSS_SELECTOR,'.skill.skill_r div[data-source="cooldown"] .pi-data-value.pi-font')
+    print(r.text)
+except:
+    print("Dont have cool down")
