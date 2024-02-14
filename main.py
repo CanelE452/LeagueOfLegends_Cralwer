@@ -38,34 +38,19 @@ for idx in range(len(champions)):
 driver.get(f"https://leagueoflegends.fandom.com/wiki/{champions[choose-1]}/LoL")
 driver.implicitly_wait(2)
 
-#Q
-print("[Skill Q cool down]")
-try:
-    q=driver.find_element(By.CSS_SELECTOR,'.skill.skill_q div[data-source="cooldown"] .pi-data-value.pi-font')
-    print(q.text)
-except:
-    print("Dont have cool down")
+skills=['q','w','e','r']
 
-#W
-print("[Skill W cool down]")
-try:
-    w=driver.find_element(By.CSS_SELECTOR,'.skill.skill_w div[data-source="cooldown"] .pi-data-value.pi-font')
-    print(w.text)
-except:
-    print("Dont have cool down")
+for skill in skills:
+    print(f"[Skill {skill.upper()} cool down]")
+    try:
+        cooldown=driver.find_element(By.CSS_SELECTOR,f'.skill.skill_{skill} div[data-source="cooldown"] .pi-data-value.pi-font')
+        print(cooldown.text)
+    except:
+        try:
+            cooldown = driver.find_element(By.CSS_SELECTOR, f'.skill.skill_{skill} div[data-source="static"] .pi-data-value.pi-font')
+            print(cooldown.text)
+        except:
+            print("Dont have cool down")
 
-#E
-print("[Skill E cool down]")
-try:
-    e=driver.find_element(By.CSS_SELECTOR,'.skill.skill_e div[data-source="cooldown"] .pi-data-value.pi-font')
-    print(e.text)
-except:
-    print("Dont have cool down")
 
-#R
-print("[Skill R cool down]")
-try:
-    r=driver.find_element(By.CSS_SELECTOR,'.skill.skill_r div[data-source="cooldown"] .pi-data-value.pi-font')
-    print(r.text)
-except:
-    print("Dont have cool down")
+# exception : Nidalee Elise Jayce Gnar Kled Hwei
