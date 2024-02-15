@@ -50,7 +50,11 @@ for skill in skills:
             cooldown = driver.find_element(By.CSS_SELECTOR, f'.skill.skill_{skill} div[data-source="static"] .pi-data-value.pi-font')
             print(cooldown.text)
         except:
-            print("Dont have cool down")
+            try:
+                cooldown = driver.find_element(By.CSS_SELECTOR,f'.skill.skill_{skill}qwe div[data-source="cooldown"] .pi-data-value.pi-font')
+                print(cooldown.text)
+            except:
+                print("Dont have cool down")
 
 
-# exception : Nidalee Elise Jayce Gnar Kled Hwei
+# exception : Nidalee Elise Jayce Gnar Kled 
